@@ -12,24 +12,24 @@ struct ChessBoard {
     
     mutating func initBoard() {
         for i in 0..<2 {
-            pieceBox.insert(ChessPiece(col: 0 + i * 7, row: 0, player: .black, imageName: "Rook-black"))
-            pieceBox.insert(ChessPiece(col: 1 + i * 5, row: 0, player: .black, imageName: "Knight-black"))
-            pieceBox.insert(ChessPiece(col: 2 + i * 3, row: 0, player: .black, imageName: "Bishop-black"))
+            pieceBox.insert(ChessPiece(col: 0 + i * 7, row: 7, player: .black, imageName: "Rook-black"))
+            pieceBox.insert(ChessPiece(col: 1 + i * 5, row: 7, player: .black, imageName: "Knight-black"))
+            pieceBox.insert(ChessPiece(col: 2 + i * 3, row: 7, player: .black, imageName: "Bishop-black"))
             
-            pieceBox.insert(ChessPiece(col: 0 + i * 7, row: 7, player: .white, imageName: "Rook-white"))
-            pieceBox.insert(ChessPiece(col: 1 + i * 5, row: 7, player: .white, imageName: "Knight-white"))
-            pieceBox.insert(ChessPiece(col: 2 + i * 3, row: 7, player: .white, imageName: "Bishop-white"))
+            pieceBox.insert(ChessPiece(col: 0 + i * 7, row: 0, player: .white, imageName: "Rook-white"))
+            pieceBox.insert(ChessPiece(col: 1 + i * 5, row: 0, player: .white, imageName: "Knight-white"))
+            pieceBox.insert(ChessPiece(col: 2 + i * 3, row: 0, player: .white, imageName: "Bishop-white"))
         }
         
         for i in 0..<8 {
-            pieceBox.insert(ChessPiece(col: i, row: 1, player: .black, imageName: "Pawn-black"))
-            pieceBox.insert(ChessPiece(col: i, row: 6, player: .white, imageName: "Pawn-white"))
+            pieceBox.insert(ChessPiece(col: i, row: 6, player: .black, imageName: "Pawn-black"))
+            pieceBox.insert(ChessPiece(col: i, row: 1, player: .white, imageName: "Pawn-white"))
         }
         
-        pieceBox.insert(ChessPiece(col: 3, row: 0, player: .black, imageName: "Queen-black"))
-        pieceBox.insert(ChessPiece(col: 4, row: 0, player: .black, imageName: "King-black"))
-        pieceBox.insert(ChessPiece(col: 3, row: 7, player: .white, imageName: "Queen-white"))
-        pieceBox.insert(ChessPiece(col: 4, row: 7, player: .white, imageName: "King-white"))
+        pieceBox.insert(ChessPiece(col: 3, row: 7, player: .black, imageName: "Queen-black"))
+        pieceBox.insert(ChessPiece(col: 4, row: 7, player: .black, imageName: "King-black"))
+        pieceBox.insert(ChessPiece(col: 3, row: 0, player: .white, imageName: "Queen-white"))
+        pieceBox.insert(ChessPiece(col: 4, row: 0, player: .white, imageName: "King-white"))
     }
     
     func pieceAt(col: Int, row: Int) -> ChessPiece? {

@@ -28,7 +28,7 @@ class BoardView: UIView {
         let first = touches.first!
         let fingerLocation = first.location(in: self)
         fromCol = Int(fingerLocation.x / cellSide)
-        fromRow = Int(fingerLocation.y / cellSide)
+        fromRow = 7 - Int(fingerLocation.y / cellSide)
         
         movingPiece = chessDelegate?.pieceAt(col: fromCol, row: fromRow)
     }
@@ -37,7 +37,7 @@ class BoardView: UIView {
         let first = touches.first!
         let fingerLocation = first.location(in: self)
         let toCol: Int = Int(fingerLocation.x / cellSide)
-        let toRow: Int = Int(fingerLocation.y / cellSide)
+        let toRow: Int = 7 - Int(fingerLocation.y / cellSide)
         chessDelegate?.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
         movingPiece = nil
     }
@@ -63,7 +63,7 @@ class BoardView: UIView {
     
     func drawPieceAt(col: Int, row: Int, imageName: String) {
         let pawnImage = UIImage(named: imageName)
-        pawnImage?.draw(in: CGRect(x: CGFloat(col) * cellSide, y: CGFloat(row) * cellSide, width: cellSide, height: cellSide))
+        pawnImage?.draw(in: CGRect(x: CGFloat(col) * cellSide, y: CGFloat(7 - row) * cellSide, width: cellSide, height: cellSide))
     }
     
     func drawBoard() {
