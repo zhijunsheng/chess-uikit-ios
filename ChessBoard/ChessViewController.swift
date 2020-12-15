@@ -32,10 +32,23 @@ class ChessViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: UIButton) {
-        communicator.chessDelegate = self
-        communicator.socketDelegate = self
-        communicator.openSocket()
-        connectButton.isEnabled = false
+        let alert = UIAlertController(title: "Socket Server", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.text = "127.0.0.1"
+        }
+        alert.addTextField { textField in
+            textField.text = "50000"
+        }
+        alert.addAction(UIAlertAction(title: "Cancle", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Connect", style: .default, handler: { alertAction in
+            if let serverIP = alert.textFields?.first?.text, let portStr = alert.textFields?.last?.text, let port = Int(portStr) {
+                self.communicator.chessDelegate = self
+                self.communicator.socketDelegate = self
+                self.communicator.openSocket(serverIP: serverIP, port: port)
+                self.connectButton.isEnabled = false
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 

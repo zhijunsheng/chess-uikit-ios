@@ -13,11 +13,11 @@ class Communicator: NSObject {
     var chessDelegate: ChessDelegate?
     var socketDelegate: SocketDelegate?
     
-    func openSocket() {
+    func openSocket(serverIP: String, port: Int) {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, "localhost" as CFString, 50000, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, serverIP as CFString, UInt32(port), &readStream, &writeStream)
         
         inputStream = readStream!.takeRetainedValue()
         outputStream = writeStream!.takeRetainedValue()
