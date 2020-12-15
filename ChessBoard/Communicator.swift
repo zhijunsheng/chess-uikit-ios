@@ -8,8 +8,8 @@
 import Foundation
 
 class Communicator: NSObject {
-    var inputStream: InputStream!
-    var outputStream: OutputStream!
+    var inputStream: InputStream?
+    var outputStream: OutputStream?
     var chessDelegate: ChessDelegate?
     
     func setupSocketComm() {
@@ -21,13 +21,13 @@ class Communicator: NSObject {
         inputStream = readStream!.takeRetainedValue()
         outputStream = writeStream!.takeRetainedValue()
         
-        inputStream.delegate = self
+        inputStream?.delegate = self
         
-        inputStream.schedule(in: .current, forMode: .common)
-        outputStream.schedule(in: .current, forMode: .common)
+        inputStream?.schedule(in: .current, forMode: .common)
+        outputStream?.schedule(in: .current, forMode: .common)
         
-        inputStream.open()
-        outputStream.open()
+        inputStream?.open()
+        outputStream?.open()
     }
     
     func sendMove(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
@@ -38,7 +38,7 @@ class Communicator: NSObject {
                 print("error sending chess move")
                 return
             }
-            outputStream.write(pointer, maxLength: data.count)
+            outputStream?.write(pointer, maxLength: data.count)
         }
     }
 }
@@ -65,7 +65,9 @@ extension Communicator: StreamDelegate {
         let maxReadLength = 4096
         let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
         while stream.hasBytesAvailable {
-            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+            guard let numberOfBytesRead = inputStream?.read(buffer, maxLength: maxReadLength) else {
+                return
+            }
             if numberOfBytesRead < 0, let error = stream.streamError {
                 print(error)
                 break

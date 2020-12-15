@@ -31,16 +31,27 @@
                                     <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNc-Qz-HxB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvR-Y3-e19">
+                                <rect key="frame" x="20" y="1070" width="984" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dq4-od-oc0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OxX-4H-CLK" secondAttribute="trailing" constant="20" id="A8Q-S0-jgI"/>
                             <constraint firstItem="fkk-iX-1nZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C7b-K7-vxb"/>
+                            <constraint firstItem="RvR-Y3-e19" firstAttribute="top" secondItem="OxX-4H-CLK" secondAttribute="bottom" constant="8" symbolic="YES" id="HZ0-4D-3uY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fkk-iX-1nZ" secondAttribute="trailing" constant="20" id="NWF-77-ol7"/>
                             <constraint firstItem="OxX-4H-CLK" firstAttribute="top" secondItem="fkk-iX-1nZ" secondAttribute="bottom" constant="8" symbolic="YES" id="NWx-Px-0Y7"/>
                             <constraint firstItem="fkk-iX-1nZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WfD-IG-jwn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RvR-Y3-e19" secondAttribute="trailing" constant="20" id="dpU-8a-7Vg"/>
                             <constraint firstItem="OxX-4H-CLK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ejN-mC-nAB"/>
+                            <constraint firstItem="RvR-Y3-e19" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f0R-bh-oSW"/>
                         </constraints>
                     </view>
                     <connections>
