@@ -35,9 +35,11 @@ class ChessViewController: UIViewController {
         let alert = UIAlertController(title: "Socket Server", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.text = "127.0.0.1"
+            textField.keyboardType = .URL
         }
         alert.addTextField { textField in
             textField.text = "50000"
+            textField.keyboardType = .numberPad
         }
         alert.addAction(UIAlertAction(title: "Cancle", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Connect", style: .default, handler: { alertAction in
