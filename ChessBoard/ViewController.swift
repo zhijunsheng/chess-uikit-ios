@@ -8,11 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController, ChessDelegate {
-    
     let communicator = Communicator()
-
     var chessBoard = ChessModel()
+    
     @IBOutlet weak var boardView: BoardView!
+    @IBOutlet weak var connectButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,15 @@ class ViewController: UIViewController, ChessDelegate {
         chessBoard.initBoard()
         boardView.shadowPieceBox = chessBoard.pieceBox
         boardView.setNeedsDisplay()
+        
+        communicator.closeSocket()
+        connectButton.isEnabled = true
     }
     
     @IBAction func connect(_ sender: UIButton) {
         communicator.chessDelegate = self
-        communicator.setupSocketComm()
+        communicator.openSocket()
+        connectButton.isEnabled = false
     }
     
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {

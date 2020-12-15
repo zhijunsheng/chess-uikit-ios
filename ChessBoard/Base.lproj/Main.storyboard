@@ -56,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="boardView" destination="fkk-iX-1nZ" id="YOc-Yz-vF1"/>
+                        <outlet property="connectButton" destination="RvR-Y3-e19" id="2yC-HU-i2S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

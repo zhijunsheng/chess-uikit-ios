@@ -12,7 +12,7 @@ class Communicator: NSObject {
     var outputStream: OutputStream?
     var chessDelegate: ChessDelegate?
     
-    func setupSocketComm() {
+    func openSocket() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         
@@ -28,6 +28,11 @@ class Communicator: NSObject {
         
         inputStream?.open()
         outputStream?.open()
+    }
+    
+    func closeSocket() {
+        inputStream?.close()
+        outputStream?.close()
     }
     
     func sendMove(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
