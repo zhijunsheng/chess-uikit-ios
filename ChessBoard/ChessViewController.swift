@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ChessDelegate {
+class ChessViewController: UIViewController {
     let communicator = Communicator()
     var chessBoard = ChessModel()
     
@@ -33,10 +33,22 @@ class ViewController: UIViewController, ChessDelegate {
     
     @IBAction func connect(_ sender: UIButton) {
         communicator.chessDelegate = self
+        communicator.socketDelegate = self
         communicator.openSocket()
         connectButton.isEnabled = false
     }
-    
+}
+
+extension ChessViewController: SocketDelegate {
+    func socketClosed() {
+        print("socket closed")
+        let alert = UIAlertController(title: "Socket closed", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ChessViewController: ChessDelegate {
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
         chessBoard.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
         boardView.setNeedsDisplay()

@@ -11,6 +11,7 @@ class Communicator: NSObject {
     var inputStream: InputStream?
     var outputStream: OutputStream?
     var chessDelegate: ChessDelegate?
+    var socketDelegate: SocketDelegate?
     
     func openSocket() {
         var readStream: Unmanaged<CFReadStream>?
@@ -55,8 +56,14 @@ extension Communicator: StreamDelegate {
             readAvailableBytes(stream: aStream as! InputStream)
         case .endEncountered:
             print("endEncountered")
+            DispatchQueue.main.async {
+                self.socketDelegate?.socketClosed()
+            }
         case .errorOccurred:
             print("errorOccurred")
+            DispatchQueue.main.async {
+                self.socketDelegate?.socketClosed()
+            }
         case .hasSpaceAvailable:
             print("hasSpaceAvailable")
         case .openCompleted:
