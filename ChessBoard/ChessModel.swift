@@ -1,13 +1,13 @@
 //
-//  ChessBoard.swift
-//  ChessBoard
+//  ChessModel.swift
+//  ChessModel
 //
 //  Created by Golden Thumb on 2020-11-04.
 //
 
 import Foundation
 
-struct ChessBoard {
+struct ChessModel {
     var pieceBox: Set<ChessPiece> = []
     
     mutating func initBoard() {

@@ -11,7 +11,7 @@ class ViewController: UIViewController, ChessDelegate {
     
     let communicator = Communicator()
 
-    var chessBoard = ChessBoard()
+    var chessBoard = ChessModel()
     @IBOutlet weak var boardView: BoardView!
     
     override func viewDidLoad() {
