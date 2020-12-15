@@ -8,7 +8,6 @@
 import UIKit
 
 class BoardView: UIView {
-    var shadowPieceBox: Set<ChessPiece> = []
     var cellSide: CGFloat = 0
     var fromCol: Int = -1
     var fromRow: Int = -1
@@ -51,8 +50,12 @@ class BoardView: UIView {
     }
     
     func drawPieces() {
-        for piece in shadowPieceBox where piece != movingPiece {
-            drawPieceAt(col: piece.col, row: piece.row, imageName: piece.imageName)
+        for row in 0..<8 {
+            for col in 0..<8 {
+                if let piece = chessDelegate?.pieceAt(col: col, row: row), piece != movingPiece {
+                    drawPieceAt(col: piece.col, row: piece.row, imageName: piece.imageName)
+                }
+            }
         }
         
         if let movingPiece = movingPiece {

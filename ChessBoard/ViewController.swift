@@ -20,13 +20,11 @@ class ViewController: UIViewController, ChessDelegate {
         boardView.chessDelegate = self
         
         chessBoard.initBoard()
-        boardView.shadowPieceBox = chessBoard.pieceBox
         boardView.setNeedsDisplay()
     }
     
     @IBAction func reset(_ sender: UIButton) {
         chessBoard.initBoard()
-        boardView.shadowPieceBox = chessBoard.pieceBox
         boardView.setNeedsDisplay()
         
         communicator.closeSocket()
@@ -41,7 +39,6 @@ class ViewController: UIViewController, ChessDelegate {
     
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
         chessBoard.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
-        boardView.shadowPieceBox = chessBoard.pieceBox
         boardView.setNeedsDisplay()
         
         communicator.sendMove(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
