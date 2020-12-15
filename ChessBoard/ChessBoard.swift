@@ -11,6 +11,8 @@ struct ChessBoard {
     var pieceBox: Set<ChessPiece> = []
     
     mutating func initBoard() {
+        pieceBox.removeAll()
+        
         for i in 0..<2 {
             pieceBox.insert(ChessPiece(col: 0 + i * 7, row: 7, player: .black, imageName: "Rook-black"))
             pieceBox.insert(ChessPiece(col: 1 + i * 5, row: 7, player: .black, imageName: "Knight-black"))

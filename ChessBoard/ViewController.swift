@@ -26,6 +26,12 @@ class ViewController: UIViewController, ChessDelegate {
         communicator.chessDelegate = self
         communicator.setupSocketComm()
     }
+    
+    @IBAction func reset(_ sender: UIButton) {
+        chessBoard.initBoard()
+        boardView.shadowPieceBox = chessBoard.pieceBox
+        boardView.setNeedsDisplay()
+    }
 
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
         chessBoard.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
@@ -39,13 +45,3 @@ class ViewController: UIViewController, ChessDelegate {
         return chessBoard.pieceAt(col: col, row: row)
     }
 }
-
-/*
- 
- macOS Cocoa
- macOS SwiftUI
- 
- * iOS UIKit
- iOS SwiftUI
- 
- */
