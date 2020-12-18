@@ -92,7 +92,7 @@ extension Communicator: StreamDelegate {
                 let moveArr = msg.components(separatedBy: ",")
                 if let fromCol = Int(moveArr[0]), let fromRow = Int(moveArr[1]), let toCol = Int(moveArr[2]), let toRow = Int(moveArr[3]) {
                     DispatchQueue.main.async {
-                        self.chessDelegate?.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
+                        self.socketDelegate?.moveReceived(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
                     }
                 }
             }

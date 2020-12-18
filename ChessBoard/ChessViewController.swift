@@ -55,6 +55,11 @@ class ChessViewController: UIViewController {
 }
 
 extension ChessViewController: SocketDelegate {
+    func moveReceived(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
+        chessBoard.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
+        boardView.setNeedsDisplay()
+    }
+    
     func socketClosed() {
         print("socket closed")
         let alert = UIAlertController(title: "Socket closed", message: nil, preferredStyle: .alert)
